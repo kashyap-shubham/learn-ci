@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Print a message to confirm the script is running
-echo "Deploy script started."
-
 whoami
 # Navigate to home directory
 cd ~
@@ -10,13 +7,14 @@ cd ~
 rm -rf learn-ci
 
 # Clone the repo
-git pull origin main
+git clone https://github.com/kashyap-shubham/learn-ci.git
 cd learn-ci
+
+echo "successfully cloned the repo"
 
 # List files to debug and confirm deploy.sh location
 echo "Listing files in the repo:"
-ls -al
+ls -a
 
 npm install
-npm run build
-npm run start
+node src/index.js
