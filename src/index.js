@@ -4,7 +4,8 @@ const app = express();
 app.get('/', (req,res) => {
   res.json({
     message: 'this app is working',
-    message1: 'now ci is working fine'
+    message1: 'now ci is working fine',
+    message2: 'checking ci again'
   })
 });
 
