@@ -1,7 +1,8 @@
 #!/bin/bash
 
-# Print a message to confirm the script is running
-echo "Deploy script started."
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
 whoami
 # Navigate to home directory
@@ -10,13 +11,18 @@ cd ~
 rm -rf learn-ci
 
 # Clone the repo
-git pull origin main
+git clone https://github.com/kashyap-shubham/learn-ci.git
+source ~/.bashrc
 cd learn-ci
+
+echo "successfully cloned the repo"
 
 # List files to debug and confirm deploy.sh location
 echo "Listing files in the repo:"
-ls -al
+ls -a
+
+echo "npm path: $(which npm)"
+npm -v
 
 npm install
-npm run build
-npm run start
+pm2 start src/index.js  --name test
